@@ -38,6 +38,7 @@
             Register_btn = new Button();
             LogIn_btn = new Button();
             Header_lbl = new Label();
+            LogIn_Continue_btn = new Button();
             Authorization_pnl.SuspendLayout();
             LogIn_pnl.SuspendLayout();
             LogInRegistration_pnl.SuspendLayout();
@@ -60,17 +61,22 @@
             LogIn_pnl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             LogIn_pnl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             LogIn_pnl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            LogIn_pnl.Controls.Add(LogIn_Continue_btn, 0, 4);
             LogIn_pnl.Controls.Add(Password_lbl, 0, 2);
             LogIn_pnl.Controls.Add(Email_lbl, 0, 0);
             LogIn_pnl.Controls.Add(Email_txtbx, 2, 0);
             LogIn_pnl.Controls.Add(Password_txtbx, 2, 2);
-            LogIn_pnl.Location = new Point(243, 464);
+            LogIn_pnl.Location = new Point(243, 463);
             LogIn_pnl.Name = "LogIn_pnl";
-            LogIn_pnl.RowCount = 3;
-            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            LogIn_pnl.Size = new Size(425, 125);
+            LogIn_pnl.RowCount = 5;
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 25F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            LogIn_pnl.Size = new Size(425, 200);
             LogIn_pnl.TabIndex = 3;
             LogIn_pnl.Visible = false;
             // 
@@ -172,6 +178,19 @@
             Header_lbl.TabIndex = 0;
             Header_lbl.Text = "MonoX";
             // 
+            // LogIn_Continue_btn
+            // 
+            LogIn_pnl.SetColumnSpan(LogIn_Continue_btn, 3);
+            LogIn_Continue_btn.Dock = DockStyle.Fill;
+            LogIn_Continue_btn.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            LogIn_Continue_btn.Location = new Point(3, 153);
+            LogIn_Continue_btn.Name = "LogIn_Continue_btn";
+            LogIn_Continue_btn.Size = new Size(419, 44);
+            LogIn_Continue_btn.TabIndex = 4;
+            LogIn_Continue_btn.Text = "Войти";
+            LogIn_Continue_btn.UseVisualStyleBackColor = true;
+            LogIn_Continue_btn.Click += this.LogIn_Continue_btn_Click;
+            // 
             // StartForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -201,5 +220,6 @@
         private Label Password_lbl;
         private TextBox Email_txtbx;
         private MaskedTextBox Password_txtbx;
+        private Button LogIn_Continue_btn;
     }
 }

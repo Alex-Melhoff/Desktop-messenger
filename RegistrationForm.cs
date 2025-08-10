@@ -16,5 +16,12 @@ namespace MonoX
         {
             InitializeComponent();
         }
+
+        private void LogIn_btn_Click(object sender, EventArgs e)
+        {
+            var StartForm = new StartForm();
+            StartForm.Show();
+            this.Close();
+        }
     }
 }

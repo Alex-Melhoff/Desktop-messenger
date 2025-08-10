@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             Register_pnl = new Panel();
+            Register_Header_lbl = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             Nickname_lbl = new Label();
             Email_lbl = new Label();
@@ -36,7 +37,7 @@
             Nickname_txtbx = new TextBox();
             Email_txtbx = new TextBox();
             Password_txtbx = new MaskedTextBox();
-            Register_Header_lbl = new Label();
+            LogIn_btn = new Button();
             Register_pnl.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -44,12 +45,25 @@
             // Register_pnl
             // 
             Register_pnl.BackColor = Color.WhiteSmoke;
+            Register_pnl.Controls.Add(LogIn_btn);
             Register_pnl.Controls.Add(Register_Header_lbl);
             Register_pnl.Controls.Add(tableLayoutPanel1);
             Register_pnl.Location = new Point(500, 0);
             Register_pnl.Name = "Register_pnl";
             Register_pnl.Size = new Size(920, 1080);
             Register_pnl.TabIndex = 0;
+            // 
+            // Register_Header_lbl
+            // 
+            Register_Header_lbl.AutoSize = true;
+            Register_Header_lbl.BackColor = Color.Transparent;
+            Register_Header_lbl.Font = new Font("Lucida Sans Unicode", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Register_Header_lbl.ForeColor = SystemColors.ControlText;
+            Register_Header_lbl.Location = new Point(305, 245);
+            Register_Header_lbl.Name = "Register_Header_lbl";
+            Register_Header_lbl.Size = new Size(298, 54);
+            Register_Header_lbl.TabIndex = 1;
+            Register_Header_lbl.Text = "Регистрация";
             // 
             // tableLayoutPanel1
             // 
@@ -144,17 +158,16 @@
             Password_txtbx.Size = new Size(250, 27);
             Password_txtbx.TabIndex = 10;
             // 
-            // Register_Header_lbl
+            // LogIn_btn
             // 
-            Register_Header_lbl.AutoSize = true;
-            Register_Header_lbl.BackColor = Color.Transparent;
-            Register_Header_lbl.Font = new Font("Lucida Sans Unicode", 25.8000011F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            Register_Header_lbl.ForeColor = SystemColors.ControlText;
-            Register_Header_lbl.Location = new Point(305, 245);
-            Register_Header_lbl.Name = "Register_Header_lbl";
-            Register_Header_lbl.Size = new Size(298, 54);
-            Register_Header_lbl.TabIndex = 1;
-            Register_Header_lbl.Text = "Регистрация";
+            LogIn_btn.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            LogIn_btn.Location = new Point(327, 562);
+            LogIn_btn.Name = "LogIn_btn";
+            LogIn_btn.Size = new Size(244, 44);
+            LogIn_btn.TabIndex = 3;
+            LogIn_btn.Text = "Войти";
+            LogIn_btn.UseVisualStyleBackColor = true;
+            LogIn_btn.Click += LogIn_btn_Click;
             // 
             // RegistrationForm
             // 
@@ -183,5 +196,6 @@
         private TextBox Email_txtbx;
         private MaskedTextBox Password_txtbx;
         private Label Register_Header_lbl;
+        private Button LogIn_btn;
     }
 }

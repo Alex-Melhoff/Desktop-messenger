@@ -12,8 +12,10 @@ namespace MonoX
         private void Register_btn_Click(object sender, EventArgs e)
         {
             // MessageBox.Show("–егистрируем нового хоз€ина!");
+            
             var RegForm = new RegistrationForm();
             RegForm.Show();
+            this.Hide();
         }
 
         private void LogIn_btn_Click(object sender, EventArgs e)
@@ -24,5 +26,10 @@ namespace MonoX
             LogIn_pnl.Location = new Point(LogIn_pnl.Location.X, LogInRegistration_pnl.Location.Y);
         }
 
+        private void LogIn_Continue_btn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("ѕриветствуем хоз€ина!");
+            
+        }
     }
 }
