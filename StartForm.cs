@@ -1,17 +1,19 @@
 namespace MonoX
 {
-    public partial class Form1 : Form
+    public partial class StartForm : Form
     {
         private bool LogInRegister_pnl_IsVisible = true;
         private bool LogIn_pnl_IsVisible = false;
-        public Form1()
+        public StartForm()
         {
             InitializeComponent();
         }
 
         private void Register_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("–егистрируем нового хоз€ина!");
+            // MessageBox.Show("–егистрируем нового хоз€ина!");
+            var RegForm = new RegistrationForm();
+            RegForm.Show();
         }
 
         private void LogIn_btn_Click(object sender, EventArgs e)

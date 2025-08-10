@@ -1,6 +1,6 @@
 ﻿namespace MonoX
 {
-    partial class Form1
+    partial class StartForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -72,6 +72,7 @@
             LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
             LogIn_pnl.Size = new Size(425, 125);
             LogIn_pnl.TabIndex = 3;
+            LogIn_pnl.Visible = false;
             // 
             // Password_lbl
             // 
@@ -171,14 +172,14 @@
             Header_lbl.TabIndex = 0;
             Header_lbl.Text = "MonoX";
             // 
-            // Form1
+            // StartForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Gray;
             ClientSize = new Size(1902, 1033);
             Controls.Add(Authorization_pnl);
-            Name = "Form1";
+            Name = "StartForm";
             Text = "MonoX";
             Authorization_pnl.ResumeLayout(false);
             Authorization_pnl.PerformLayout();
