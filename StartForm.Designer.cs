@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Authorization_pnl = new Panel();
             LogIn_pnl = new TableLayoutPanel();
+            LogIn_Continue_btn = new Button();
             Password_lbl = new Label();
             Email_lbl = new Label();
             Email_txtbx = new TextBox();
@@ -38,7 +40,7 @@
             Register_btn = new Button();
             LogIn_btn = new Button();
             Header_lbl = new Label();
-            LogIn_Continue_btn = new Button();
+            toolTip1 = new ToolTip(components);
             Authorization_pnl.SuspendLayout();
             LogIn_pnl.SuspendLayout();
             LogInRegistration_pnl.SuspendLayout();
@@ -79,6 +81,19 @@
             LogIn_pnl.Size = new Size(425, 200);
             LogIn_pnl.TabIndex = 3;
             LogIn_pnl.Visible = false;
+            // 
+            // LogIn_Continue_btn
+            // 
+            LogIn_pnl.SetColumnSpan(LogIn_Continue_btn, 3);
+            LogIn_Continue_btn.Dock = DockStyle.Fill;
+            LogIn_Continue_btn.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            LogIn_Continue_btn.Location = new Point(3, 153);
+            LogIn_Continue_btn.Name = "LogIn_Continue_btn";
+            LogIn_Continue_btn.Size = new Size(419, 44);
+            LogIn_Continue_btn.TabIndex = 4;
+            LogIn_Continue_btn.Text = "Войти";
+            LogIn_Continue_btn.UseVisualStyleBackColor = true;
+            LogIn_Continue_btn.Click += LogIn_Continue_btn_Click;
             // 
             // Password_lbl
             // 
@@ -126,6 +141,7 @@
             Password_txtbx.PasswordChar = '*';
             Password_txtbx.Size = new Size(250, 27);
             Password_txtbx.TabIndex = 6;
+            toolTip1.SetToolTip(Password_txtbx, ">8 символов, буквы, цифры и символы");
             // 
             // LogInRegistration_pnl
             // 
@@ -178,19 +194,6 @@
             Header_lbl.TabIndex = 0;
             Header_lbl.Text = "MonoX";
             // 
-            // LogIn_Continue_btn
-            // 
-            LogIn_pnl.SetColumnSpan(LogIn_Continue_btn, 3);
-            LogIn_Continue_btn.Dock = DockStyle.Fill;
-            LogIn_Continue_btn.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            LogIn_Continue_btn.Location = new Point(3, 153);
-            LogIn_Continue_btn.Name = "LogIn_Continue_btn";
-            LogIn_Continue_btn.Size = new Size(419, 44);
-            LogIn_Continue_btn.TabIndex = 4;
-            LogIn_Continue_btn.Text = "Войти";
-            LogIn_Continue_btn.UseVisualStyleBackColor = true;
-            LogIn_Continue_btn.Click += this.LogIn_Continue_btn_Click;
-            // 
             // StartForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -221,5 +224,6 @@
         private TextBox Email_txtbx;
         private MaskedTextBox Password_txtbx;
         private Button LogIn_Continue_btn;
+        private ToolTip toolTip1;
     }
 }
