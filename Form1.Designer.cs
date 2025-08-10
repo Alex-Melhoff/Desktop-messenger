@@ -29,19 +29,24 @@
         private void InitializeComponent()
         {
             Authorization_pnl = new Panel();
-            button1 = new Button();
+            LogIn_pnl = new TableLayoutPanel();
+            Password_lbl = new Label();
+            Email_lbl = new Label();
+            Email_txtbx = new TextBox();
+            Password_txtbx = new MaskedTextBox();
             LogInRegistration_pnl = new TableLayoutPanel();
             Register_btn = new Button();
             LogIn_btn = new Button();
             Header_lbl = new Label();
             Authorization_pnl.SuspendLayout();
+            LogIn_pnl.SuspendLayout();
             LogInRegistration_pnl.SuspendLayout();
             SuspendLayout();
             // 
             // Authorization_pnl
             // 
             Authorization_pnl.BackColor = Color.WhiteSmoke;
-            Authorization_pnl.Controls.Add(button1);
+            Authorization_pnl.Controls.Add(LogIn_pnl);
             Authorization_pnl.Controls.Add(LogInRegistration_pnl);
             Authorization_pnl.Controls.Add(Header_lbl);
             Authorization_pnl.Location = new Point(500, 0);
@@ -49,15 +54,71 @@
             Authorization_pnl.Size = new Size(920, 1080);
             Authorization_pnl.TabIndex = 0;
             // 
-            // button1
+            // LogIn_pnl
             // 
-            button1.Location = new Point(114, 361);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 2;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            LogIn_pnl.ColumnCount = 3;
+            LogIn_pnl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            LogIn_pnl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            LogIn_pnl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 60F));
+            LogIn_pnl.Controls.Add(Password_lbl, 0, 2);
+            LogIn_pnl.Controls.Add(Email_lbl, 0, 0);
+            LogIn_pnl.Controls.Add(Email_txtbx, 2, 0);
+            LogIn_pnl.Controls.Add(Password_txtbx, 2, 2);
+            LogIn_pnl.Location = new Point(243, 464);
+            LogIn_pnl.Name = "LogIn_pnl";
+            LogIn_pnl.RowCount = 3;
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            LogIn_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            LogIn_pnl.Size = new Size(425, 125);
+            LogIn_pnl.TabIndex = 3;
+            // 
+            // Password_lbl
+            // 
+            Password_lbl.Anchor = AnchorStyles.Left;
+            Password_lbl.AutoSize = true;
+            Password_lbl.BackColor = Color.Transparent;
+            Password_lbl.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Password_lbl.Location = new Point(3, 86);
+            Password_lbl.Name = "Password_lbl";
+            Password_lbl.Size = new Size(90, 27);
+            Password_lbl.TabIndex = 5;
+            Password_lbl.Text = "Пароль";
+            Password_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Email_lbl
+            // 
+            Email_lbl.Anchor = AnchorStyles.Left;
+            Email_lbl.AutoSize = true;
+            Email_lbl.BackColor = Color.Transparent;
+            Email_lbl.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
+            Email_lbl.Location = new Point(3, 11);
+            Email_lbl.Name = "Email_lbl";
+            Email_lbl.Size = new Size(77, 27);
+            Email_lbl.TabIndex = 4;
+            Email_lbl.Text = "Email";
+            Email_lbl.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // Email_txtbx
+            // 
+            Email_txtbx.Anchor = AnchorStyles.None;
+            Email_txtbx.BackColor = Color.White;
+            Email_txtbx.BorderStyle = BorderStyle.FixedSingle;
+            Email_txtbx.Location = new Point(172, 11);
+            Email_txtbx.Name = "Email_txtbx";
+            Email_txtbx.Size = new Size(250, 27);
+            Email_txtbx.TabIndex = 4;
+            // 
+            // Password_txtbx
+            // 
+            Password_txtbx.Anchor = AnchorStyles.None;
+            Password_txtbx.BackColor = Color.White;
+            Password_txtbx.BorderStyle = BorderStyle.FixedSingle;
+            Password_txtbx.Location = new Point(172, 86);
+            Password_txtbx.Name = "Password_txtbx";
+            Password_txtbx.PasswordChar = '*';
+            Password_txtbx.Size = new Size(250, 27);
+            Password_txtbx.TabIndex = 6;
             // 
             // LogInRegistration_pnl
             // 
@@ -65,7 +126,7 @@
             LogInRegistration_pnl.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             LogInRegistration_pnl.Controls.Add(Register_btn, 0, 2);
             LogInRegistration_pnl.Controls.Add(LogIn_btn, 0, 0);
-            LogInRegistration_pnl.Location = new Point(341, 312);
+            LogInRegistration_pnl.Location = new Point(335, 307);
             LogInRegistration_pnl.Name = "LogInRegistration_pnl";
             LogInRegistration_pnl.RowCount = 3;
             LogInRegistration_pnl.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
@@ -121,6 +182,8 @@
             Text = "MonoX";
             Authorization_pnl.ResumeLayout(false);
             Authorization_pnl.PerformLayout();
+            LogIn_pnl.ResumeLayout(false);
+            LogIn_pnl.PerformLayout();
             LogInRegistration_pnl.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -132,6 +195,10 @@
         private TableLayoutPanel LogInRegistration_pnl;
         private Button LogIn_btn;
         private Button Register_btn;
-        private Button button1;
+        private TableLayoutPanel LogIn_pnl;
+        private Label Email_lbl;
+        private Label Password_lbl;
+        private TextBox Email_txtbx;
+        private MaskedTextBox Password_txtbx;
     }
 }

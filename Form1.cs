@@ -2,7 +2,8 @@ namespace MonoX
 {
     public partial class Form1 : Form
     {
-        private bool isVisible = true;
+        private bool LogInRegister_pnl_IsVisible = true;
+        private bool LogIn_pnl_IsVisible = false;
         public Form1()
         {
             InitializeComponent();
@@ -15,19 +16,11 @@ namespace MonoX
 
         private void LogIn_btn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Приветствуем хозяина!");
+            //MessageBox.Show("Приветствуем хозяина!");
+            LogInRegistration_pnl.Visible = !LogInRegister_pnl_IsVisible;
+            LogIn_pnl.Visible = !LogIn_pnl_IsVisible;
+            LogIn_pnl.Location = new Point(LogIn_pnl.Location.X, LogInRegistration_pnl.Location.Y);
         }
 
-        private void ChangeVisibility_LogInRegister_pnl(bool isVisible)
-        {
-            LogIn_btn.Visible = isVisible;
-            Register_btn.Visible = isVisible;
-        }
-
-        private void button1_Click(object sender, EventArgs e) // для тестов
-        {
-            isVisible = !isVisible;
-            ChangeVisibility_LogInRegister_pnl(isVisible);
-        }
     }
 }
