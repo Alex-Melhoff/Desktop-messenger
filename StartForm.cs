@@ -7,12 +7,67 @@ namespace MonoX
         public StartForm()
         {
             InitializeComponent();
+            this.Resize += StartForm_Resize;
+            LogIn_btn.MouseEnter += OnMouseEnter_LogIn_btn;
+            LogIn_btn.MouseLeave += OnMouseLeave_LogIn_btn;
+            Register_btn.MouseEnter += OnMouseEnter_Register_btn;
+            Register_btn.MouseLeave += OnMouseLeave_Register_btn;
+            LogIn_Continue_btn.MouseEnter += OnMouseEnter_LogIn_Continue_btn;
+            LogIn_Continue_btn.MouseLeave += OnMouseLeave_LogIn_Continue_btn;
         }
 
+        private void StartForm_Resize(object sender, EventArgs e)
+        {
+            FontResize(Header_lbl, 14f);
+            FontResize(Email_lbl, 8f);
+            FontResize(Password_lbl, 8f);
+            FontResize(LogIn_Continue_btn, 8f);
+            FontResize(LogIn_btn, 8f);
+            FontResize(Register_btn, 8f);
+        }
+        private void FontResize(Control control, float baseFontSize)
+        {
+            const int baseFormWidth = 1080; // Ўирина формы, при которой используетс€ baseFontSize
+
+            float scaleFactor = (float)this.Width / baseFormWidth;
+            float newFontSize = baseFontSize * Math.Min(scaleFactor, 1.5f); // ќграничиваем максимальный масштаб
+
+            control.Font = new Font(control.Font.FontFamily, newFontSize, control.Font.Style);
+
+            // ÷ентрируем текст после изменени€ размера
+            control.Left = (this.ClientSize.Width - control.Width) / 2;
+        }
+        // Mouse events //
+        private void OnMouseEnter_LogIn_btn(object sender, EventArgs e)
+        {
+            LogIn_btn.BackColor = Color.DarkGray;
+        }
+        private void OnMouseLeave_LogIn_btn(object sender, EventArgs e)
+        {
+            LogIn_btn.BackColor = Color.LightGray;
+        }
+        private void OnMouseEnter_Register_btn(object sender, EventArgs e)
+        {
+            Register_btn.BackColor = Color.DarkGray;
+        }
+        private void OnMouseLeave_Register_btn(object sender, EventArgs e)
+        {
+            Register_btn.BackColor = Color.LightGray;
+        }
+        private void OnMouseEnter_LogIn_Continue_btn(object sender, EventArgs e)
+        {
+            LogIn_Continue_btn.BackColor = Color.DarkGray;
+        }
+        private void OnMouseLeave_LogIn_Continue_btn(object sender, EventArgs e)
+        {
+            LogIn_Continue_btn.BackColor = Color.LightGray;
+        }
+       
+        
         private void Register_btn_Click(object sender, EventArgs e)
         {
             // MessageBox.Show("–егистрируем нового хоз€ина!");
-            
+
             var RegForm = new RegistrationForm();
             RegForm.Show();
             this.Hide();
@@ -23,7 +78,9 @@ namespace MonoX
             //MessageBox.Show("ѕриветствуем хоз€ина!");
             LogInRegistration_pnl.Visible = !LogInRegister_pnl_IsVisible;
             LogIn_pnl.Visible = !LogIn_pnl_IsVisible;
-            LogIn_pnl.Location = new Point(LogIn_pnl.Location.X, LogInRegistration_pnl.Location.Y);
+            //LogIn_pnl.Location = new Point(LogIn_pnl.Location.X, LogInRegistration_pnl.Location.Y);
+            Authorization_pnl.SetRow(LogIn_pnl, 3);
+            Authorization_pnl.SetRowSpan(LogIn_pnl, 2);
         }
 
         private void LogIn_Continue_btn_Click(object sender, EventArgs e)
@@ -59,5 +116,10 @@ namespace MonoX
 
 
         }
+
+
+        
+
+       
     }
 }
