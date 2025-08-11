@@ -140,13 +140,13 @@
             LogIn_Continue_btn.BackColor = Color.LightGray;
             LogIn_pnl.SetColumnSpan(LogIn_Continue_btn, 3);
             LogIn_Continue_btn.Dock = DockStyle.Fill;
+            LogIn_Continue_btn.FlatAppearance.BorderSize = 0;
             LogIn_Continue_btn.FlatStyle = FlatStyle.Flat;
             LogIn_Continue_btn.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             LogIn_Continue_btn.Location = new Point(3, 141);
             LogIn_Continue_btn.Name = "LogIn_Continue_btn";
             LogIn_Continue_btn.Size = new Size(414, 41);
             LogIn_Continue_btn.TabIndex = 4;
-            LogIn_Continue_btn.FlatAppearance.BorderSize = 0;
             LogIn_Continue_btn.TabStop = false;
             LogIn_Continue_btn.Text = "Войти";
             LogIn_Continue_btn.UseVisualStyleBackColor = false;
@@ -224,12 +224,12 @@
             // 
             Register_btn.BackColor = Color.LightGray;
             Register_btn.Dock = DockStyle.Fill;
+            Register_btn.FlatAppearance.BorderSize = 0;
             Register_btn.FlatStyle = FlatStyle.Flat;
             Register_btn.Font = new Font("Consolas", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Register_btn.Location = new Point(3, 70);
             Register_btn.Name = "Register_btn";
             Register_btn.Size = new Size(242, 40);
-            Register_btn.FlatAppearance.BorderSize = 0;
             Register_btn.TabIndex = 3;
             Register_btn.TabStop = false;
             Register_btn.Text = "Регистрация";
