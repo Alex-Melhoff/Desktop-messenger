@@ -1,3 +1,5 @@
+using MonoX.DataBaseWorker;
+
 namespace MonoX
 {
     public partial class StartForm : Form
@@ -89,29 +91,22 @@ namespace MonoX
             string email = Email_txtbx.Text.TrimStart(' ').TrimEnd(' ');
             string password = Password_txtbx.Text.TrimStart(' ').TrimEnd(' ');
 
-            if (email == string.Empty ||  // если поле(поля) не заполнено(ны)
-                password == string.Empty)
+            if (!Config.UserDataAreCorrect(email, password))
             {
-                MessageBox.Show("Заполните все поля");
                 return;
             }
-            if (!Config.EmailEndings.Any(email.Contains) ||  // если нет привычного окончания email 
-                email.IndexOf('@') == 0 ||                   // или знак '@' стоит первым
-                email.Count(x => x == '@') > 1 ||            // или знак '@' не один
-                email.Contains(' '))                         // или внутри email есть пробелы
-            {
-                MessageBox.Show("Некорректный email");
-                return;
-            }
-            if (password.Length < 8) MessageBox.Show("Длина пароля меньше 8 символов");
-            else if (!password.Any(c => Config.IsLetter(c))) MessageBox.Show("Пароль не содержит букв");
-            else if (!password.Any(c => char.IsDigit(c))) MessageBox.Show("Пароль не содержит цифр");
-            else if (!password.Any(c => c == '-' || c == '_')) MessageBox.Show("Пароль не содержит символов '-' или '_'");
 
+            if (DBWorker.FindUser(email, password) == false) // поиск пользователя
+            {
+                MessageBox.Show("Пользователя с такими данными не существует");
+                // очистка полей
+                Email_txtbx.Text = string.Empty;
+                Password_txtbx.Text = string.Empty;
+            }
             else
             {
-                /// проверка email и пароля в базе данных ///
-                MessageBox.Show("Поздравляем с успешным входом!");
+                MessageBox.Show("Успешный вход!");
+                LogIn_btn.Visible = true;
             }
 
 

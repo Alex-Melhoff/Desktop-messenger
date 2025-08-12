@@ -10,7 +10,7 @@ namespace MonoX.DataBaseWorker
     internal static class DBWorker
     {
         const string DBName = "Users";
-        const string DBAddress = "Users.db";
+        const string DBAddress = "C:\\Users\\Александр\\Desktop\\Projects\\MonoX\\MonoX\\DataBaseWorker\\Users.db";
         const string NicknameField = "Nickname";
         const string EmailField = "Email";
         const string IdField = "Id";
@@ -30,24 +30,27 @@ namespace MonoX.DataBaseWorker
                 connection.Open();
                 SqliteCommand command = new SqliteCommand(sqlExpression, connection);
                 command.ExecuteNonQuery();
-                MessageBox.Show("Таблица Users создана или открыта");
             }
         }
-        public static bool FindUser(string email, string DBAddress = DBAddress)
+        public static bool FindUser(string email, string password, string DBAddress = DBAddress)
         {
-            if (email == string.Empty)
+            if (email == string.Empty ||
+                password == string.Empty)
             {
                 MessageBox.Show("Предоставлены пустые данные при поиске пользователя");
                 return false;
             }
-            //email = email.Replace('@', 'Ё');
             OpenCreateTable(DBName, DBAddress);
-            var sqlExpression = $"SELECT * FROM {DBName} WHERE {EmailField}=@email";
+            var sqlExpression = $"SELECT * FROM {DBName} WHERE {EmailField}=@email AND {PasswordField}=@password";
+            MessageBox.Show($"Find\nEmail: {email}\nPassword: {password}");
             using (var connection = new SqliteConnection($"Data Source={DBAddress}"))
             {
                 connection.Open();
                 SqliteCommand command = new SqliteCommand(sqlExpression, connection);
+
                 command.Parameters.AddWithValue("@email", email);
+                command.Parameters.AddWithValue("@password", password);
+
                 using (SqliteDataReader reader = command.ExecuteReader())
                 {
                     if (reader.HasRows) // если есть данные
@@ -55,7 +58,9 @@ namespace MonoX.DataBaseWorker
                         while (reader.Read())   // построчно считываем данные
                         {
                             var tableEmail = reader.GetValue(2);
-                            if (Convert.ToString(tableEmail) == email)
+                            var tablePassword = reader.GetValue(3);
+                            if (Convert.ToString(tableEmail) == email &&
+                                Convert.ToString(tablePassword) == password)
                             {
                                 return true;
                             }
@@ -80,14 +85,19 @@ namespace MonoX.DataBaseWorker
                 return false;
             }
 
-            //email = email.Replace('@', 'Ё');
             OpenCreateTable(DBName, DBAddress);
             var sqlExpression = $"INSERT INTO {DBName} ({NicknameField}, {EmailField}, {PasswordField}, {CreatedAtField}) " +
-                                              $"VALUES ({nickname}, {email}, {password}, {createdAt})";
+                                              $"VALUES (@nickname, @email, @password, @createdAt)";
+            MessageBox.Show($"ADD\nEmail: {email}\nPassword: {password}\nNickname: {nickname}\nCreated At: {createdAt}");
             using (var connection = new SqliteConnection($"Data Source={DBAddress}"))
             {
                 connection.Open();
                 SqliteCommand command = new SqliteCommand(sqlExpression, connection);
+                command.Parameters.AddWithValue("@nickname", nickname);
+                command.Parameters.AddWithValue("@email", email);
+                command.Parameters.AddWithValue("@password", password);
+                command.Parameters.AddWithValue("@createdAt", createdAt);
+                command.ExecuteNonQuery();
             }
             MessageBox.Show("Новый пользователь добавлен в базу данных");
             return true;
