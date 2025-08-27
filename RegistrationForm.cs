@@ -83,7 +83,7 @@ namespace MonoX
             /// проверка email и пароля в базе данных ///
             if (DBWorker.AddUser(nickname, email, password, Convert.ToString(DateTime.Now)) == false) // добавление пользователя
             {
-                MessageBox.Show("Пользователь с таким email уже существует");
+                MessageBox.Show("Пользователь с таким email уже существует!");
                 // очистка полей
                 Email_txtbx.Text = string.Empty;
                 Nickname_txtbx.Text = string.Empty;

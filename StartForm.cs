@@ -107,6 +107,10 @@ namespace MonoX
             {
                 MessageBox.Show("Успешный вход!");
                 LogIn_btn.Visible = true;
+
+                var chatForm = new ChatForm();
+                chatForm.Show();
+                this.Hide();
             }
 
 
